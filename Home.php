@@ -59,15 +59,15 @@
   .Menu li a:hover {
     background-color: #CCCCCC;
   }
-   /* .Menu li .time{
-    font-size:  500px;
-    color: #fff; */
-    /* position: relative;
-    transform: translate(100%,500%);
-    font-family:Courier, monospace;
-    font-size: 30px;
-    color:rgba(42, 125, 111, 0.9) */
-  /* } */
+  .Menu .time{
+    text-decoration: none;
+    color:rgb(53,141,173);
+    font-family:verdana;
+    border-right: 2px solid #FFFFFF;
+    padding: 3px 10px;
+    float: right;
+  }
+
   #coffee{
     text-align:right;
   }
@@ -265,12 +265,12 @@
     <div class = "Menu" >
       <ul>
         <li><a href = "Home.php"> Home </a></li>
-        <li><a href = "#footer"> About </a></li>
+        <li><a href = "About.php"> About </a></li>
         <li><a href = "View.php" >View</a></li>
       </ul>
 
         <div class = "time">
-          <?php echo date("l F jS, Y -g:ia", time());?>
+          <?php echo date("l F j, Y g:ia", time());?>
         </div>
 
     </div>
@@ -278,7 +278,7 @@
         <img src = "coffee.jpg" class = "pro_pic" alt ="">
         <h4> Have a coffee and relax</h4>
     </div>
-    <button class = "openButton" type = "button" onclick = "openNOTES()"> + </button>
+    <button class = "openButton" type = "button" onclick = "openNOTES()"> Add Note </button>
     <div id = "addNote" class="openAdding">
       <form class = "notepad" action="note.php" method = "post">
         <h2>Notes</h2>

@@ -69,15 +69,14 @@
     padding: 3px 10px;
     float: right;
   }
-
   .retrieve{
     position: relative;
     margin-bottom: 50px;
-    top: 60%;
+    top: 70%;
     left: 50%;
-    transform: translate(-50%,200%);
+    transform: translate(-50%,100%);
     width: 70%;
-    padding: 30px;
+    padding: 50px;
     background: rgba(255, 240, 236, 0.5);
     box-sizing: border-box;
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.5);
@@ -88,83 +87,36 @@
     <div class = "Menu" >
       <ul>
         <li><a href = "Home.php"> Home </a></li>
-        <li><a href = "#footer"> About </a></li>
+        <li><a href = "About.php"> About </a></li>
         <li><a href = "View.php" >view</a></li>
       </ul>
 
         <div class = "time">
-          <?php echo date("l F j, Y g:ia", time());?>
+          <?php echo date("l F jS, Y -g:ia", time());?>
         </div>
 
     </div>
-    <div>
 <?php
 
-      $file = fopen("storage.txt", 'r') or die("File does not exist or you lack permission ot open it ");
-      // $content = fgets($file);
-      // if ($content == "Title")
-      // {
-      //   echo "<div class = 'retrieve'>";
-      //   echo $content;
-      // }
-      while(!feof($file))
+    $file = fopen("storage.txt", 'r') or die("File does not exist or you lack permission ot open it ");
+    while(!feof($file))
+    {
+      $content = fgets($file);
+      if($content == "\n")
+      echo "<div class = '  $content'>";
+      echo $content;
+      $filename = $content;
+      $yournote = fopen($filename,'r') or die("File could not be imported");
+      while(!feof($yournote))
       {
-        $content = fgets($file);
-        echo "<div class = 'retrieve'>";
-        $content = fgets($file);
-        echo $content;
-        echo "</div>";
-        // if($content == "Title")
-        // {
-        //   echo "</div>";
-        //   echo "<div class = 'retrieve'>";
-        // }
-        // echo $content;
-        // if(feof($file))
-        // {
-        //   echo "</div>";
-        // }
+            $notes = fgets($yournote);
+            echo $notes;
       }
-      fclose($file);
-
-    // for($i=0 ; $i<$x ; $i++)
-    // {
-      // echo $notes[$i];
-      // $notebook= $notes[0];
-      // $file = fopen($notebook, 'r') or die("File could not be imported");
-      // while(!feof($file))
-      // {
-      //   $str = fgets($file);
-      //   print $str;
-      // }
-      // fclose($file);
-    // while(!feof($file))
-    // {
-      // echo "<div class = 'retrieve'>";
-      // $content = fgets($file);
-      // echo $content;
-
-    //   $yournote = fopen($content,'r') or die("File could not be imported");
-    //   echo " Title\n";
-    //   echo $title."<br>";
-    //   echo "<label> Notes </label>\n";
-    //   while(!feof($yournote))
-    //   {
-    //     $notes = fgets($yournote);
-    //     echo $note;
-    //     if (feof($yournote))
-    //     {
-    //       break;
-    //     }
-    //   }
-    //   if (feof($file))
-    //   {
-    //     break;
-    //   }
-    //   echo "</div>";
-     // }
+      fclose($yournote);
+      echo "</div>";
+    }
+    fclose($file);
 ?>
-</div>
 
 </body>
 </html>
